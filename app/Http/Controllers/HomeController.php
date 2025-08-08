@@ -45,11 +45,12 @@ class HomeController extends Controller
         $pelanggan = Pelanggan ::count();
         $penerimaanbarang = PenerimaanBarang ::count();
         $berhenti = BerhentiBerlangganan ::count();
+        // whereMonth
 
-        $totalOrder = PengeluaranBarang::whereMonth('created_at', $bulanIni)
+        $totalOrder = PengeluaranBarang::whereYear('created_at', $tahunIni)
         ->whereYear('created_at', $tahunIni)
         ->count();
-        $totalPendapatan = PengeluaranBarang::whereMonth('created_at', $bulanIni)
+        $totalPendapatan = PengeluaranBarang::whereYear('created_at', $tahunIni)
         ->whereYear('created_at', $tahunIni)
         ->sum('total_harga');
         $totalPendapatan = "Rp. " . number_format($totalPendapatan);
@@ -60,7 +61,7 @@ class HomeController extends Controller
         });
         $produkTerlaris = ItemPengeluaranBarang::select('nama_produk')
         ->selectRaw('SUM(qty) as total_terjual')
-        ->whereMonth('created_at', $bulanIni)
+        ->whereYear('created_at', $tahunIni)
         ->whereYear('created_at', $tahunIni)
         ->groupBy('nama_produk')
         ->orderBy('total_terjual')

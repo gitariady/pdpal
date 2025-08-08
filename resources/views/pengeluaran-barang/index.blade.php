@@ -155,7 +155,7 @@
                 const selectedId = $('#select2').val();
                 const selectedText = $('#select2 option:selected').text();
                 const qty = Number($('#qty').val());
-                const hargaJual = Number($('#harga_jual').val()); // ganti camelCase
+                const hargaJual = Number($('#harga_jual').val());
                 const subTotal = qty * hargaJual;
 
                 if (!selectedId || !qty || !hargaJual) {
@@ -173,18 +173,16 @@
                 $('#table-produk tbody tr').each(function() {
                     const rowProduk = $(this).find('td:first').text();
                     if (rowProduk === selectedText) {
-                        // ---- update qty ----
                         let currentQty = Number($(this).find('td:eq(1)').text());
                         let newQty = currentQty + qty;
                         $(this).find('td:eq(1)').text(newQty);
 
-                        // ---- ambil harga satuan dari kolom ke‑2 (td:eq(2)) ----
                         const hargaSatuan = Number($(this).find('td:eq(2)').text());
                         let newSubTotal = newQty * hargaSatuan;
-                        $(this).find('td:eq(3)').text(newSubTotal); // update subtotal
+                        $(this).find('td:eq(3)').text(newSubTotal);
 
                         exist = true;
-                        return false; // break
+                        return false;
                     }
                 });
 
@@ -193,10 +191,10 @@
         <tr data-id="${selectedId}">
             <td>${selectedText}</td>
             <td>${qty}</td>
-            <td>${hargaJual}</td>          <!-- harga satuan -->
-            <td>${subTotal}</td>           <!-- subtotal -->
+            <td>${hargaJual}</td>
+            <td>${subTotal}</td>
             <td>
-                <button class="btn btn-danger btn-sm btn-remove">
+                <button type="button" class="btn btn-danger btn-sm btn-remove">
                     <i class="fa fa-trash"></i> Hapus
                 </button>
             </td>
@@ -204,7 +202,6 @@
                     $('#table-produk tbody').append(row);
                 }
 
-                // reset input
                 $('#select2').val(null).trigger('change');
                 $('#qty').val(null);
                 $('#current_stok').val(null);
@@ -212,7 +209,11 @@
                 hitungTotal();
             });
 
-            // saat submit, generate input tersembunyi
+            $('#table-produk').on('click', '.btn-remove', function() {
+                $(this).closest('tr').remove();
+                hitungTotal();
+            });
+
             $("#form-pengeluaran-barang").on("submit", function() {
                 $("#data-hidden").html("");
                 $("#table-produk tbody tr").each(function(index, row) {
@@ -240,3 +241,4 @@
         });
     </script>
 @endpush
+

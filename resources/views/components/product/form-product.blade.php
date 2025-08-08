@@ -8,7 +8,7 @@ Produk baru
     @endif
 </button>
       <div class="modal fade" id="formProduct{{$id ?? ''}}">
-        <form action="{{ route('master-data.product.store') }}" method="POST">
+        <form action="{{ route('master-data.product.store') }}" method="POST" novalidate>
             @csrf
             <input type="hidden" name="id" value="{{ $id ?? '' }}">
         <div class="modal-dialog">
@@ -24,6 +24,9 @@ Produk baru
                     <label for="">Nama Produk</label>
                     <input type="text" name="name" id="name" class="form-control"
                     value="{{$id ? $name : old('$name')}}">
+                    @error('name')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="form-group my-1">
                     <label for="">Kategori Produk</label>
@@ -33,32 +36,48 @@ Produk baru
                         <option value="{{$item->id}}" {{ $kategori_id == $item->id || old('kategori_id') == $item->id ? 'selected' : ''}}>{{$item->nama}}</option>
                         @endforeach
                     </select>
+                    @error('kategori_id')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="form-group my-1">
                     <label for="">Harga Jual</label>
                     <input type="number" name="harga_jual" id="harga_jual" class="form-control"
                     value="{{$id ? $harga_jual : old('$harga_jual')}}">
+                    @error('harga_jual')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="form-group my-1">
                     <label for="">Harga Beli</label>
                     <input type="number" name="harga_beli" id="harga_beli" class="form-control"
                     value="{{$id ? $harga_beli : old('$harga_beli')}}">
+                    @error('harga_beli')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="form-group my-1">
                     <label for="">Stok Tersedia</label>
                     <input type="number" name="stok" id="stok" class="form-control"
                     value="{{$id ? $stok : old('$stok')}}" min="1">
+                    @error('stok')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="form-group my-1">
                     <label for="">Stok Minimal</label>
                     <input type="number" name="stok_min" id="stok_min" cols="30" rows="10" class="form-control"
                     value= "{{$id ? $stok_min : old('$stok_min')}}" min="1">
+                    @error('stok_min')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
-                  <div class="form-group my-1">
-                      <label for="">Produk Aktif ?</label>&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" name="is_active" id="is_active"
-                      {{ old('is_active', $id ? $is_active :false)? 'checked' : ''}}>
+                <div class="form-group my-1">
+                    <label for="">Produk Aktif ?</label>&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" name="is_active" id="is_active"
+                    {{ old('is_active', $id ? $is_active :false)? 'checked' : ''}}>
                     <small class="d-block mt-1">Jika Aktif maka produk dapat dijual</small>
+
                 </div>
             </div>
             <div class="modal-footer justify-content-between">

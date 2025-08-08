@@ -65,7 +65,6 @@ class PetugasPelayananController extends Controller
         $petugaspelayanan = $request->validate([
             'nip' => 'required|string|max:45',
             'nama' => 'required|string|max:45',
-            'jabatan' => 'required|string|max:45',
             'bidang' => 'required|string|max:45',
             'no_hp' => 'required|string|max:15',
             'email' => 'required|string|max:35|email',
@@ -74,7 +73,7 @@ class PetugasPelayananController extends Controller
 
         petugaspelayanan::create($petugaspelayanan);
 
-        alert::success('Success', 'Berhasil menambahkan petugaspelayanan');
+        alert::success('Success', 'Berhasil menambahkan petugas pelayanan');
         return redirect()->route('petugaspelayanan.index')->with('success', 'petugaspelayanan berhasil ditambahkan');
     }
 
@@ -102,7 +101,6 @@ class PetugasPelayananController extends Controller
         $request->validate([
             'nip' => 'required|string|max:45',
             'nama' => 'required|string|max:45',
-            'jabatan' => 'required|string|max:45',
             'bidang' => 'required|string|max:45',
             'no_hp' => 'required|string|max:15',
             'email' => 'required|string|max:35|email',
@@ -111,7 +109,7 @@ class PetugasPelayananController extends Controller
 
         $petugaspelayanan->update($request->all());
 
-        alert::success('Success', 'Berhasil mengubah petugaspelayanan');
+        alert::success('Success', 'Berhasil mengubah petugas pelayanan');
         return redirect()->route('petugaspelayanan.index')->with('success', 'petugaspelayanan berhasil diubah');
     }
 
@@ -128,7 +126,7 @@ class PetugasPelayananController extends Controller
     public function destroy(string $id)
     {
         petugaspelayanan::destroy($id);
-        toast('Berhasil menghapus petugaspelayanan','success');
+        toast('Berhasil menghapus petugas pelayanan','success');
         return redirect()->route('petugaspelayanan.index')->with('success', 'petugaspelayanan berhasil dihapus');
     }
 

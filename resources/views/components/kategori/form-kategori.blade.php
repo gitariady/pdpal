@@ -23,11 +23,17 @@
                             <label for="name">Nama Kategori</label>
                             <input type="text" name="nama" id="nama" class="form-control"
                             value="{{$nama}}">
+                            @error('nama')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div>
                             <label for="">Deskripsi</label>
                             <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"
                            > {{$deskripsi}}</textarea>
+                           @error('deskripsi')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

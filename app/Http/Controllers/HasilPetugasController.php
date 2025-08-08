@@ -80,7 +80,7 @@ class hasilpetugasController extends Controller
         }
 
         hasilpetugas::create($validated);
-        alert::success('Success', 'Berhasil menambahkan hasilpetugas');
+        alert::success('Success', 'Berhasil menambahkan hasil Kegiatan petugas');
         return redirect()->route('hasilpetugas.index')->with('success', 'hasilpetugas berhasil ditambahkan');
     }
 
@@ -124,7 +124,7 @@ class hasilpetugasController extends Controller
         }
 
         $hasilpetuga->update($validated);
-        alert::success('Success', 'Berhasil mengubah hasilpetugas');
+        alert::success('Success', 'Berhasil mengubah hasil Kegiatan petugas');
         return redirect()->route('hasilpetugas.index');}
 
     /**
@@ -138,7 +138,7 @@ class hasilpetugasController extends Controller
             Storage::disk('public')->delete($hasilpetugas->foto_hasil);
         }
         $hasilpetugas->delete();
-        alert::success('Success', 'Berhasil menghapus hasilpetugas');
+        toast('Berhasil menghapus hasil Kegiatan petugas','success');
         return redirect()->route('hasilpetugas.index');}
 
         public function cetakPdf()

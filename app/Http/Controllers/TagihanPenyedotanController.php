@@ -92,7 +92,7 @@ class tagihanpenyedotanController extends Controller
         }
 
         tagihanpenyedotan::create($validated);
-        alert::success('Success', 'Berhasil menambahkan tagihanpenyedotan');
+        alert::success('Success', 'Berhasil menambahkan tagihan penyedotan');
         return redirect()->route('tagihanpenyedotan.index');}
 
     /**
@@ -142,7 +142,7 @@ class tagihanpenyedotanController extends Controller
 
 
         $tagihanpenyedotan->update($validated);
-        alert::success('Success', 'Berhasil mengubah tagihanpenyedotan');
+        alert::success('Success', 'Berhasil mengubah tagihan penyedotan');
         return redirect()->route('tagihanpenyedotan.index')->with('success', 'tagihanpenyedotan berhasil diubah');
     }
 

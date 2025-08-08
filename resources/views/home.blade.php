@@ -12,7 +12,7 @@
             <x-dashboard-card type="bg-info" icon="fas fa-users" label="Total User" value="{{ $totalUsers }}" />
             <x-dashboard-card type="bg-success" icon="fas fa-box-open" label="Total Produk" value="{{ $totalProduk }}" />
             <x-dashboard-card type="bg-primary" icon="fas fa-shopping-cart" label="Total Order" value="{{ $totalOrder }}" />
-            <x-dashboard-card type="bg-warning" icon="fas fa-wallet" label="Total Pendapatan" value="{{ $totalPendapatan }}" />
+            <x-dashboard-card type="bg-warning" icon="fas fa-wallet" label="Total Pendapatan Tahun ini" value="{{ $totalPendapatan }}" />
             <x-dashboard-card type="bg-info" icon="fas fa-user-friends" label="Total Pelanggan" value="{{ $pelanggan }}" />
             <x-dashboard-card type="bg-success" icon="fas fa-truck-loading" label="Total Penerimaan Barang" value="{{ $penerimaanbarang }}" />
             <x-dashboard-card type="bg-primary" icon="fas fa-file-alt" label="Total Laporan Masuk" value="{{ $laporan }}" />

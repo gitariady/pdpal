@@ -2,7 +2,7 @@
 @section('title', 'Tagihan No Pelanggan')
 @section('plugins.Datatables', true)
 @section('content_header')
-    <h1 class="m-0 text-dark">Data Tagihan No Pelanggan</h1>
+    <h1 class="m-0 text-dark">Data Tagihan Non Pelanggan</h1>
 @stop
 @section('content')
     <div class="row">
@@ -13,9 +13,9 @@
                         <a href="{{ route('cetak.tagihannopelanggan') }}" target="_blank" class="btn btn-success btn-md mr-2">
                             <i class="fas fa-file-pdf"></i> View Laporan
                         </a>
-                        <a href="{{ route('tagihannopelanggan.exportExcel') }}" class="btn btn-success btn-md mr-2">
+                        {{-- <a href="{{ route('tagihannopelanggan.exportExcel') }}" class="btn btn-success btn-md mr-2">
                             <i class="fas fa-file-excel"></i> Export Excel
-                        </a>
+                        </a> --}}
 
                         {{-- Modal Create --}}
                         @include('tagihannopelanggan.create')

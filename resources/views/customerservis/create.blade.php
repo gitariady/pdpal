@@ -16,14 +16,16 @@
                     @csrf
 
                     {{-- Pilih Pelanggan --}}
-                    <div class="form-group">
+                    <div class="form-group d-flex align-items-end">
+                        <div class="flex-grow-1 mr-2">
                         <label for="pelanggan_id">Pelanggan</label>
-                        <select name="pelanggan_id" id="pelanggan_id" class="form-control" required>
+                        <select name="pelanggan_id" id="pelanggan_id" class="form-control select2" required>
                             <option value="">-- Pilih Pelanggan --</option>
-                            @foreach ($pelanggans as $p)
-                                <option value="{{ $p->id }}">{{ $p->nama }} - {{ $p->pdpal_id }}</option>
-                            @endforeach
                         </select>
+                    </div>
+                    <button type="button" class="btn btn-info" id="btn-detail-pelanggan">
+                        Detail
+                    </button>
                     </div>
 
                     {{-- Pilih Jenis Servis --}}

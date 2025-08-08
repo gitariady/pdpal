@@ -42,9 +42,9 @@ class TagihanNoPelangganController extends Controller
                     return '-';
                 })
                 ->addColumn('action', function ($tagihannopelanggan) {
-                    return view('partials._3action', [
+                    return view('partials._action', [
                         'model' => $tagihannopelanggan,
-                        'url_show' => route('tagihannopelanggan.show', $tagihannopelanggan->id),
+                        // 'url_show' => route('tagihannopelanggan.show', $tagihannopelanggan->id),
                         'url_edit' => route('tagihannopelanggan.edit', $tagihannopelanggan->id),
                         'url_destroy' => route('tagihannopelanggan.destroy', $tagihannopelanggan->id)
                     ]);
@@ -78,7 +78,7 @@ class TagihanNoPelangganController extends Controller
         }
 
         tagihannopelanggan::create($validated);
-        alert::success('Success', 'Berhasil menambahkan tagihannopelanggan');
+        alert::success('Success', 'Berhasil menambahkan tagihan non pelanggan');
         return redirect()->route('tagihannopelanggan.index');
     }
     /**
@@ -123,7 +123,7 @@ class TagihanNoPelangganController extends Controller
         }
 
         $tagihannopelanggan->update($validated);
-        alert::success('Success', 'Berhasil mengubah tagihannopelanggan');
+        alert::success('Success', 'Berhasil mengubah tagihan non pelanggan');
         return redirect()->route('tagihannopelanggan.index')->with('success', 'tagihannopelanggan berhasil diubah');
     }
 
@@ -138,7 +138,7 @@ class TagihanNoPelangganController extends Controller
             Storage::disk('public')->delete($tagihannopelanggan->bukti_tagihan);
         }
         $tagihannopelanggan->delete();
-        toast('Berhasil menghapus tagihannopelanggan', 'success');
+        toast('Berhasil menghapus tagihan non pelanggan', 'success');
         return redirect()->route('tagihannopelanggan.index')->with('success', 'tagihannopelanggan berhasil dihapus');
     }
     public function cetakPdf()

@@ -13,9 +13,9 @@
                         <a href="{{ route('cetak.hasilpetugas') }}" target="_blank" class="btn btn-success btn-md mr-2">
                             <i class="fas fa-file-pdf"></i> View Laporan
                         </a>
-                        <a href="{{ route('hasilpetugas.exportExcel') }}" class="btn btn-success btn-md mr-2">
+                        {{-- <a href="{{ route('hasilpetugas.exportExcel') }}" class="btn btn-success btn-md mr-2">
                             <i class="fas fa-file-excel"></i> Export Excel
-                        </a>
+                        </a> --}}
                         @include('hasilpetugas.create')
                     </div>
                 </div>

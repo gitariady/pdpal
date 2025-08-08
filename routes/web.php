@@ -52,10 +52,15 @@ Route::get('/', function () {
 });
 /// ROUTE UNTUK KRITIK & SARAN TANPA LOGIN
 Route::post('/kritiksaran', [KritikSaranController::class, 'store'])->name('kritiksaran.store');
+Route::get('/prosespetugas/search', [ProsesPetugasController::class, 'search'])->name('prosespetugas.search');
+Route::get('/prosespetugas/{id}/detail', [ProsesPetugasController::class, 'getDetail'])->name('prosespetugas.detail');
+Route::get('/pelanggan/search', [PelangganController::class, 'search'])->name('pelanggan.search');
+Route::get('/pelanggan/{id}/detail', [PelangganController::class, 'getDetail'])->name('pelanggan.detail');
 
 
 Route::resource('kritiksaran', KritikSaranController::class);
-
+Route::get('/laporan/search', [LaporanController::class, 'search'])->name('laporan.search');
+Route::get('/laporan/{id}/detail', [LaporanController::class, 'getDetail'])->name('laporan.detail');
 Route::resource('laporan', LaporanController::class);
 Auth::routes();
 // ---------------------------------------------
@@ -89,8 +94,7 @@ Route::middleware(['auth'])->group(function () {
         // Kritik Saran
         Route::get('get-kritiksaran', [KritikSaranController::class, 'getkritiksaran'])->name('get.kritiksaran');
 
-        Route::get('/laporan/search', [LaporanController::class, 'search'])->name('laporan.search');
-        Route::get('/laporan/{id}/detail', [LaporanController::class, 'getDetail'])->name('laporan.detail');
+
         Route::get('get-laporan', [LaporanController::class, 'getlaporan'])->name('get.laporan');
         Route::get('cetak-laporan', [LaporanController::class, 'cetakPdf'])->name('cetak.laporan');
         Route::get('/laporan/export/excel', [LaporanController::class, 'exportExcel'])->name('laporan.exportExcel');
@@ -107,8 +111,6 @@ Route::middleware(['auth'])->group(function () {
     // ---------------------------
     Route::middleware(['ceklevel:petugas,supervisor'])->group(function () {
         // Proses Petugas
-        Route::get('/prosespetugas/search', [ProsesPetugasController::class, 'search'])->name('prosespetugas.search');
-        Route::get('/prosespetugas/{id}/detail', [ProsesPetugasController::class, 'getDetail'])->name('prosespetugas.detail');
         Route::resource('prosespetugas', ProsesPetugasController::class);
         Route::get('get-prosespetugas', [ProsesPetugasController::class, 'getprosespetugas'])->name('get.prosespetugas');
         Route::post('/prosespetugas', [ProsesPetugasController::class, 'store'])->name('prosespetugas.store');
@@ -122,12 +124,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('get-hasilpetugas', [HasilPetugasController::class, 'gethasilpetugas'])->name('get.hasilpetugas');
         Route::get('cetak-hasilpetugas', [HasilPetugasController::class, 'cetakPdf'])->name('cetak.hasilpetugas');
         Route::get('/hasilpetugas/export/excel', [HasilPetugasController::class, 'exportExcel'])->name('hasilpetugas.exportExcel');
-
-        // Kinerja Petugas
-        Route::resource('kinerjapetugas', KinerjaPetugasController::class);
-        Route::get('get-kinerjapetugas', [KinerjaPetugasController::class, 'getkinerjapetugas'])->name('get.kinerjapetugas');
-        Route::get('cetak-kinerjapetugas', [KinerjaPetugasController::class, 'cetakPdf'])->name('cetak.kinerjapetugas');
-        Route::get('/kinerjapetugas/export/excel', [KinerjaPetugasController::class, 'exportExcel'])->name('kinerjapetugas.exportExcel');
     });
 
     // ---------------------------------------------
@@ -192,6 +188,12 @@ Route::middleware(['auth'])->group(function () {
         Route::middleware(['ceklevel:admin,supervisor'])->group(function () {
             // Admin Dashboard
             Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+            // Kinerja Petugas
+            Route::resource('kinerjapetugas', KinerjaPetugasController::class);
+            Route::get('get-kinerjapetugas', [KinerjaPetugasController::class, 'getkinerjapetugas'])->name('get.kinerjapetugas');
+            Route::get('cetak-kinerjapetugas', [KinerjaPetugasController::class, 'cetakPdf'])->name('cetak.kinerjapetugas');
+            Route::get('/kinerjapetugas/export/excel', [KinerjaPetugasController::class, 'exportExcel'])->name('kinerjapetugas.exportExcel');
+
             // Edukasi Sosial
             Route::resource('edukasisosial', EdukasiSosialController::class);
             Route::get('get-edukasisosial', [EdukasiSosialController::class, 'getedukasisosial'])->name('get.edukasisosial');
@@ -242,8 +244,6 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('users', UserController::class);
 
             // Pelanggan
-            Route::get('/pelanggan/search', [PelangganController::class, 'search'])->name('pelanggan.search');
-            Route::get('/pelanggan/{id}/detail', [PelangganController::class, 'getDetail'])->name('pelanggan.detail');
             Route::resource('pelanggan', PelangganController::class);
             Route::get('get-pelanggan', [PelangganController::class, 'getpelanggan'])->name('get.pelanggan');
             Route::get('/laporan/pelanggan/export-excel', [PelangganController::class, 'exportExcel'])->name('pelanggan.export.excel');

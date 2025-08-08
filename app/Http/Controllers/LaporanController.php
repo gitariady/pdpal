@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\LaporanExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
+
 
 class LaporanController extends Controller
 {
@@ -34,10 +36,6 @@ class LaporanController extends Controller
         $laporan = $query->limit($request->limit ?? 5)->get(['id', 'nama']);
         return response()->json($laporan);
     }
-
-
-
-
 
 
     public function getDetail($id)
@@ -127,6 +125,9 @@ class LaporanController extends Controller
 
     public function edit(Laporan $laporan)
     {
+        if (!in_array(Auth::user()->level, ['admin', 'supervisor'])) {
+            abort(403, 'Tidak diizinkan masuk halaman ini.');
+        }
         return view('laporan.edit', compact('laporan'));
     }
 
@@ -157,6 +158,9 @@ class LaporanController extends Controller
 
     public function destroy($id)
     {
+        if (!in_array(Auth::user()->level, ['admin', 'supervisor'])) {
+            abort(403, 'Tidak diizinkan masuk halaman ini.');
+        }
         $laporan = Laporan::findOrFail($id);
         if ($laporan->ktp && Storage::disk('public')->exists($laporan->ktp)) {
             Storage::disk('public')->delete($laporan->ktp);
@@ -169,6 +173,9 @@ class LaporanController extends Controller
 
     public function cetakPdf()
     {
+        if (!in_array(Auth::user()->level, ['admin', 'supervisor'])) {
+            abort(403, 'Tidak diizinkan masuk halaman ini.');
+        }
         $laporan = Laporan::all();
         $pdf = Pdf::loadview('laporan._laporan', compact('laporan'));
         return $pdf->setPaper('a4', 'landscape')->stream('laporan.pdf');
@@ -176,6 +183,9 @@ class LaporanController extends Controller
 
     public function exportExcel()
     {
+        if (!in_array(Auth::user()->level, ['admin', 'supervisor'])) {
+            abort(403, 'Tidak diizinkan masuk halaman ini.');
+        }
         return Excel::download(new LaporanExport, 'laporan.xlsx');
     }
 }

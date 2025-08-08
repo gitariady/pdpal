@@ -31,7 +31,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tempat">Tempat</label>
-                            <input type="text" class="form-control" name="tempat" id="tempat" placeholder="Masukkan Tempat">
+                            <input type="text" class="form-control" name="tempat" id="tempat" placeholder="Masukkan Tempat" maxlength="50">
+                            <small class="form-text text-muted">Batas inputan adalah 50 karakter.</small>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="materi">Materi</label>

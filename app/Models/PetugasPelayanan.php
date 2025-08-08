@@ -15,7 +15,6 @@ class PetugasPelayanan extends Model
     protected $fillable = [
         'nip',
         'nama',
-        'jabatan',
         'bidang',
         'no_hp',
         'email',

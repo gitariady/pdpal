@@ -66,7 +66,7 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="" class="navbar-brand">
-                    <img src="https://img.perumdapaldbanjarmasin.com/mixin/logopald.webp" alt="" width="250">
+                    <img src="{{ asset('vendor/adminlte/dist/img/logo.jpg') }}" alt="" width="250">
                 </a>
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -78,14 +78,14 @@
                     <ul class="navbar-nav">
                         <li class="d-block d-lg-none">
                             <div class="logo">
-                                <a href="/" class="d-block"><img
-                                        src="{{ asset('vendor/adminlte/dist/img/logo.png') }}" alt=""
+                                {{-- <a href="/" class="d-block"><img
+                                        src="{{ asset('vendor/adminlte/dist/img/logo.jpg') }}" alt=""
                                         width="200">
-                                </a>
+                                </a> --}}
                             </div>
-                        </li>
+                        {{-- </li>
                         <li class="nav-item"><a href="#kodeetik" class="nav-link">Kode Etik</a>
-                        </li>
+                        </li> --}}
                         {{-- <li class="nav-item"><a href="#faq" class="nav-link">Pertanyaan</a>
                         </li>
                         <li class="nav-item"><a href="#kegiatan" class="nav-link">Kegiatan</a>

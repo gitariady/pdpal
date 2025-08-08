@@ -44,18 +44,24 @@
             margin-top: 15px;
         }
         .info-block {
-            width: 48%;
+            width: 45%;
         }
     </style>
 </head>
 <body>
-    <h3>Laporan Detail Penerimaan Barang</h3>
 
     <div class="header-section">
-        <div class="company-title">
-            PERUSAHAAN DAERAH PENGELOLAAN AIR LIMBAH
-        </div>
-        <div>
+        <img src="images/pd1.png" align="left" height="80" width="80" />
+        <h4>
+            PERUSAHAAN DAERAH PENGELOLA AIR LIMBAH
+            <br></br>
+            PD PAL KOTA BANJARMASIN
+        </h4>
+        <br>
+        <hr style="border: 2px solid black;margin-top: 0px;"/>
+
+        <h3>Laporan Detail Penerimaan Barang</h3>
+
             <small>{{ $data->tanggal_penerimaan }}</small>
         </div>
     </div>
@@ -98,3 +104,4 @@
     </table>
 </body>
 </html>
+

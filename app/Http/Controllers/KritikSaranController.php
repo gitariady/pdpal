@@ -6,6 +6,7 @@ use App\Models\KritikSaran;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class KritikSaranController extends Controller
 {
@@ -21,6 +22,9 @@ class KritikSaranController extends Controller
 
     public function index()
     {
+        if (!in_array(Auth::user()->level, ['admin', 'supervisor'])) {
+            abort(403, 'Tidak diizinkan masuk halaman ini.');
+        }
         $kritiksaran = \App\Models\KritikSaran::all();
         return view('kritiksaran.index', compact('kritiksaran'));
     }
@@ -32,9 +36,8 @@ class KritikSaranController extends Controller
             return DataTables::of($kritiksaran)
                 ->addIndexColumn()
                 ->addColumn('action', function ($kritiksaran) {
-                    return view('partials._action', [
+                    return view('partials.kritik', [
                         'model' => $kritiksaran,
-                        'url_edit' => route('kritiksaran.edit', $kritiksaran->id),
                         'url_destroy' => route('kritiksaran.destroy', $kritiksaran->id)
                     ]);
                 })->rawColumns(['action'])
@@ -76,7 +79,13 @@ class KritikSaranController extends Controller
      */
     public function destroy(string $id)
     {
-        // destroy data from database
+        if (
+            Auth::user()->level
+            !== 'supervisor'
+        ) {
+            abort(403, 'Tidak diizinkan menghapus data ini.');
+        }
+
         KritikSaran::destroy($id);
         toast('Kritik dan Saran berhasil dihapus', 'success');
         return redirect()->back();

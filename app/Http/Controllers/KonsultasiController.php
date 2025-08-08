@@ -20,12 +20,13 @@ class KonsultasiController extends Controller
     public function index()
     {
         $petugaspelayan = PetugasPelayanan::all();
+        $konsultasi = Konsultasi::with(['petugasPelayanan']);
         return view('konsultasi.index', compact('petugaspelayan'));
     }
     public function getkonsultasi(Request $request)
     {
         if ($request->ajax()) {
-            $konsultasi = Konsultasi::with(['petugasPelayanan']); // Ganti 'tagihanperbaikan' dengan nama model AndaNoPelanggan::with('prosesPetugas')->get();
+            $konsultasi = Konsultasi::with(['petugasPelayanan']);
             return DataTables::of($konsultasi)
                 ->addIndexColumn()
                 ->addColumn('nama_petugas', function ($row) {
@@ -174,7 +175,7 @@ class KonsultasiController extends Controller
         // Hapus data dari database
         $konsultasi->delete();
 
-        Alert::success('Success', 'Berhasil menghapus konsultasi');
+        Alert::toast('Berhasil menghapus konsultasi', 'success');
         return redirect()->route('konsultasi.index');
     }
 

@@ -1,11 +1,24 @@
-@extends('layouts.master')
+@extends('adminlte::page')
 
-@section('content_header')
-    <h1 class="m-0 text-dark">DASHBOARD</h1>
+@section('title', 'User Dashboard')
+
+{{-- Override Navbar --}}
+@section('navbar')
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Custom navbar untuk user -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" >Home</a>
+        </li>
+    </ul>
+</nav>
 @endsection
 
-@section('content_title', 'DASHBOARD') {{-- Kalau dipakai di breadcrumb --}}
+{{-- Bisa override section lain juga --}}
+@section('content_header')
+    <h1>Halo, Pengguna!</h1>
+@endsection
 
 @section('content')
-    <h1>Selamat Datang, {{ auth()->user()->name }}</h1>
+    <p>Ini dashboard pengguna.</p>
 @endsection

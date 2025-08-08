@@ -15,7 +15,7 @@ class LaporanExport implements FromCollection, WithHeadings, WithStyles, WithTit
 {
     public function collection()
     {
-        return Laporan::select('jenis_laporan', 'status_pelaporan', 'tgl', 'nama', 'no_hp', 'alamat', 'ktp', 'keterangan')->get();
+        return Laporan::select('jenis_laporan', 'status_pelaporan', 'created_at', 'nama', 'no_hp', 'alamat', 'ktp', 'keterangan')->get();
     }
 
     public function headings(): array

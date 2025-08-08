@@ -5,25 +5,46 @@
     <meta charset="utf-8">
     <title>Laporan Tagihan No Pelanggan</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            font-size: 12px;
         }
-
-        th,
-        td {
+        th, td {
             border: 1px solid #000;
-            padding: 8px;
+            padding: 6px;
+            text-align: left;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
         }
     </style>
 </head>
+<body>
+    <img src="images/pd1.png" align="left" height="80" width="80" />
+            <h4>
+                PERUSAHAAN DAERAH PENGELOLA AIR LIMBAH
+                <br></br>
+                PD PAL KOTA BANJARMASIN
+            </h4>
+            <hr style="border: 2px solid black;"/>
 
-<body><div style="text-align: center;">
-    <h2 class="d-flex align-items-center mb-0">
-        <i class=""></i> <strong style="border-bottom: 2px solid;">PERUSAHAAN DAERAH PENGELOLAAN AIR LIMBAH</strong>
-    </h2>
-</div>
-    <h2>Laporan Data Tagihan Non Pelanggan</h2>
+    <h2>Laporan Data Tertagih Non Pelanggan</h2>
     <table>
         <thead>
             <tr>
@@ -31,7 +52,7 @@
                 <th>Proses Kegiatan ID</th>
                 <th>Bukti Tagihan</th>
                 <th>Metode</th>
-                <th>Total</th>
+                <th>Total Pengembalian Dana</th>
                 <th>Keterangan</th>
             </tr>
         </thead>

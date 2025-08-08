@@ -52,7 +52,7 @@
 
                     {{-- Total --}}
                     <div class="form-group">
-                        <label for="total">Total Tagihan</label>
+                        <label for="total">Total Pengembalian Tagihan</label>
                         <input type="number" class="form-control" name="total" id="total" placeholder="Masukkan Total" min="1" required>
                     </div>
 

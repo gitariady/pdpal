@@ -17,6 +17,8 @@ return [
     'use_ico_only' => false,
     'use_full_favicon' => false,
 
+    'favicon' => 'favicon.ico', // Pastikan file ada di /public
+
     /* Google Fonts
     Here you can allow or not the use of external google fonts. Disabling the
     | google fonts may be useful if your admin panel internet access is
@@ -218,12 +220,13 @@ return [
 
         [
             'text' => 'Master Data',
-            'icon' => 'fas fa-fw fa-box',
+            'icon' => 'fas fa-fw fa-database',
+            'can' => 'akses-menu-3', // akan diperiksa lewat Gate
             'submenu' => [
                 [
                     'text' => 'Data Pelanggan',
                     'route' => 'pelanggan.index',
-                    'icon' => 'fas fa-fw fa-home',
+                    'icon' => 'fas fa-fw fa-users',
                 ],
                 [
                     'text' => 'Bangunan',
@@ -248,13 +251,19 @@ return [
             ],
         ],
         [
-            'text' => 'Report',
-            'icon' => 'fas fa-fw fa-file-alt',
-            'submenu' => [
+            'text' => 'Hubungan Layanan',
+            'icon' => 'fas fa-fw fa-handshake',
+            'can' => 'akses-menu-1',
+            'submenu' =>  [
                 [
-                    'text' => 'Laporan',
+                    'text' => 'Pelayanan',
                     'route' => 'laporan.index',
-                    'icon' => 'fas fa-fw fa-file-alt',
+                    'icon' => 'fas fa-fw fa-hands-helping',
+                ],[
+                    'text' => 'Customer Servis',
+                    'route' => 'customerservis.index',
+                    'icon' => 'fas fa-fw fa-user-tie',
+                    'can' => 'akses-menu-4',
                 ],
                 [
                     'text' => 'Kritik Saran',
@@ -266,7 +275,14 @@ return [
         [
             'text' => 'Kegitan Khusus',
             'icon' => 'fas fa-fw fa-tasks',
+            'can' => 'akses-menu-2',
             'submenu' => [
+                [
+                    'text' => 'Pelayanan',
+                    'route' => 'laporan.index',
+                    'icon' => 'fas fa-fw fa-hands-helping',
+                    'can' => 'akses-menu-4',
+                ],
                 [
                     'text' => 'Proses Kegiatan',
                     'route' => 'prosespetugas.index',
@@ -278,10 +294,6 @@ return [
                     'icon' => 'fas fa-fw fa-clipboard-check',
                 ],
                 [
-                    'text' => 'Kinerja Petugas',
-                    'route' => 'kinerjapetugas.index',
-                    'icon' => 'fas fa-fw fa-chart-line',
-                ],[
                     'text' => 'Customer Servis',
                     'route' => 'customerservis.index',
                     'icon' => 'fas fa-fw fa-user-tie',
@@ -289,8 +301,9 @@ return [
             ],
         ],
         [
-            'text' => 'Pelayan Sosial',
+            'text' => 'Pelayan Umum',
             'icon' => 'fas fa-fw fa-hands-helping',
+            'can' => 'akses-menu-1',
             'submenu' => [
                 [
                     'text' => 'Konsultasi',
@@ -302,7 +315,6 @@ return [
                     'route' => 'edukasisosial.index',
                     'icon' => 'fas fa-fw fa-book',
                 ],
-
                 [
                     'text' => 'Berhenti Berlangganan',
                     'route' => 'berhentiberlangganan.index',
@@ -313,6 +325,7 @@ return [
         [
             'text' => 'Laporan Tagihan',
             'icon' => 'fas fa-fw fa-cash-register',
+            'can' => 'akses-menu-1',
             'submenu' => [
                 [
                     'text' => 'Tagihan Pemasangan',
@@ -330,15 +343,22 @@ return [
                     'icon' => 'fas fa-fw fa-file-invoice-dollar',
                 ],
                 [
-                    'text' => 'Tagihan No Pelanggan',
+                    'text' => 'Tertagihan Non Pelanggan',
                     'route' => 'tagihannopelanggan.index',
                     'icon' => 'fas fa-fw fa-file-alt',
                 ],
             ],
         ],[
+            'text' => 'Kinerja Petugas',
+            'route' => 'kinerjapetugas.index',
+            'icon' => 'fas fa-fw fa-chart-line',
+            'can' => 'akses-menu-1',
+        ],
+        [
             'text' => 'Transaksi Barang',
             'route' => 'admin',
             'icon' => 'fas fa-fw fa-box-open',
+            'can' => 'akses-menu-1',
         ],
 
 

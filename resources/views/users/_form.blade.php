@@ -17,19 +17,18 @@
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
-                        <label for="name">Nama Lengkap</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Lengkap">
+                        <label for="name">Nama Lengkap <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Lengkap" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email">
+                        <label for="email">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password">
+                        <label for="password">Password <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password" required>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>

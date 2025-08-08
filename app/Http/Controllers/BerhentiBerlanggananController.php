@@ -18,6 +18,7 @@ class BerhentiBerlanggananController extends Controller
     public function index()
     {
         $petugaspelayanan = PetugasPelayanan::all();
+        $berhentiberlangganan = Berhentiberlangganan::with('petugasPelayanan')->latest();
         return view('berhentiberlangganan.index', compact('petugaspelayanan'));
     }
 
@@ -144,7 +145,7 @@ class BerhentiBerlanggananController extends Controller
         }
 
         $berhentiberlangganan->delete();
-        Alert::success('Success', 'Berhasil menghapus data');
+        toast( 'Berhasil menghapus data Berhenti Berlangganan', 'success');
         return redirect()->route('berhentiberlangganan.index');
     }
     public function cetakPdf()

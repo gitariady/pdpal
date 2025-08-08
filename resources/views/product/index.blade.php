@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="card-body">
-            <x-alert :errors='$errors' type="warning" />
+            {{-- <x-alert :errors='$errors' type="warning" /> --}}
             <table class="table table-sm " id="table2">
                 <thead>
                     <tr>

@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group my-1">
                             <label for="tempat">Tempat</label>
-                            <input type="text" class="form-control" name="tempat" id="tempat" value="{{ old('tempat', $edukasisosial->tempat) }}" placeholder="Masukkan Tempat">
+                            <input type="text" class="form-control" name="tempat" id="tempat" value="{{ old('tempat', $edukasisosial->tempat) }}" placeholder="Masukkan Tempat Hanya 50 Karakter" maxlength="50">
                         </div>
                         <div class="form-group my-1">
                             <label for="materi">Materi</label>

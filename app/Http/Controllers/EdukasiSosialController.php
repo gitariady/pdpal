@@ -182,7 +182,7 @@ class EdukasiSosialController extends Controller
 
         $edukasisosial->delete();
 
-        alert::success('Success', 'Berhasil menghapus edukasi sosial');
+        Alert::toast( 'Berhasil menghapus edukasi sosial','success');
         return redirect()->route('edukasisosial.index');
     }
 

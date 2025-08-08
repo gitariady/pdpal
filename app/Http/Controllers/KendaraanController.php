@@ -98,7 +98,7 @@ class kendaraanController extends Controller
     public function destroy(string $id)
     {
         kendaraan::destroy($id);
-        alert::success('Success', 'Berhasil menghapus kendaraan');
+        toast( 'Berhasil menghapus kendaraan','success');
         return redirect()->route('kendaraan.index');
     }
     //     public function exportPdf()

@@ -21,27 +21,26 @@ class PelangganController extends Controller
     {
         return view('pelanggan.index');
     }
+
     public function search(Request $request)
     {
-        $search = $request->get('search', '');
-        $proses = pelanggan::query()
-            ->when($search, fn($q) => $q->where('id', 'like', "%$search%"))
-            ->limit(5)
-            ->get(['id']);
+        $query = pelanggan::query();
 
-        return response()->json(
-            $proses->map(fn($item) => ['id' => $item->id, 'text' => ' ID ' . $item->id])
-        );
+        if ($request->search != '') {
+            $query->where('id', 'like', "%{$request->search}%")
+                  ->orWhere('nama', 'like', "%{$request->search}%");
+        }
+        $pelanggan = $query->limit($request->limit ?? 5)->get(['id', 'nama']);
+        return response()->json($pelanggan);
     }
-
     public function getDetail($id)
-{
-    $proses = pelanggan::with( 'pelanggan')->find($id);
-    if (!$proses) {
-        return response()->json(['message' => 'Data tidak ditemukan'], 404);
+    {
+        $pelanggan = pelanggan::find($id);
+        if (!$pelanggan) {
+            return response()->json(['message' => 'Data tidak ditemukan'], 404);
+        }
+        return $pelanggan;
     }
-    return $proses; // Untuk test
-}
 
 
 
@@ -173,7 +172,7 @@ class PelangganController extends Controller
     {
         $pelanggan = pelanggan::findOrFail($id);
         $pelanggan->delete();
-        alert::success('Success', 'Berhasil menghapus pelanggan');
+        toast('Berhasil menghapus pelanggan','success');
         return redirect()->route('pelanggan.index');
     }
     public function exportExcel()

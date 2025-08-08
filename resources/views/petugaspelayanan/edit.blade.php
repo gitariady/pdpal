@@ -21,10 +21,10 @@
                         <label for="nama">Nama petugas pelayanan</label>
                         <input value="{{ $petugaspelayanan->nama }}" type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama petugaspelayanan">
                     </div>
-                    <div class="form-group my-1">
+                    {{-- <div class="form-group my-1">
                         <label for="jabatan">Jabatan</label>
                         <input value="{{ $petugaspelayanan->jabatan }}" type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Masukkan Jabatan">
-                    </div>
+                    </div> --}}
                     <div class="form-group my-1">
                         <label for="bidang">Bidang</label>
                         <input value="{{ $petugaspelayanan->bidang }}" type="text" class="form-control" name="bidang" id="bidang" placeholder="Masukkan Bidang">

@@ -48,11 +48,13 @@
         $(document).ready(function() {
             var table = $('.table').DataTable({
                 processing: true,
-                serverSide: true,
-                responsive: true,
-                scrollY: '300px',     // Tinggi area scroll (sesuaikan)
-                scrollCollapse: true, // Aktifkan scroll collapse
-                // paging: false,        // Matikan pagination (opsional)
+            serverSide: true,
+            scrollX: true,          // scroll horizontal
+            scrollY: '500px',       // tinggi area scroll vertikal
+            scrollCollapse: true,   // tetap aktif walau data < 5
+            // paging: false,          // matikan pagination
+            responsive: true,
+            autoWidth: false,       // Matikan pagination (opsional)
                 ajax: {
                         url: "{{ route('get.edukasisosial') }}",
                         type: 'GET'

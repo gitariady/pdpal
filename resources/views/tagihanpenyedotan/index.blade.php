@@ -2,7 +2,7 @@
 @section('title', 'tagihan Penyedotan')
 @section('plugins.Datatables', true)
 @section('content_header')
-    <h1 class="m-0 text-dark">Data tagihan Penyedotan</h1>
+    <h1 class="m-0 text-dark">Data Tagihan Penyedotan</h1>
 @stop
 @section('content')
     <div class="row">
@@ -12,10 +12,10 @@
                     <a href="{{ route('cetak.tagihanpenyedotan') }}" target="_blank" class="btn btn-success btn-md mr-2">
                         <i class="fas fa-file-pdf"></i> View Laporan
                     </a>
-                    <a  class="btn btn-success btn-md mr-2">
+                    {{-- <a  class="btn btn-success btn-md mr-2">
                         <i class="fas fa-file-excel"></i> Export Excel
-                        {{-- href="{{ route('tagihanPenyedotan.exportExcel') }}" --}}
-                    </a>
+                        href="{{ route('tagihanPenyedotan.exportExcel') }}"
+                    </a> --}}
                     @include('tagihanpenyedotan.create')
                 </div>
                 </div>

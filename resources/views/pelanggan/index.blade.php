@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <x-alert :errors='$errors' type="warning" />
+                    {{-- <x-alert :errors='$errors' type="warning" /> --}}
                     <div class="table-responsive" style="overflow-x: auto;">
                         <table id="pelangganTable" class="table table-bordered table-striped w-100">
                             <thead>

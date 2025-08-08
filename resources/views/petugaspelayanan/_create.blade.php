@@ -17,12 +17,12 @@
                     <div class="form-group my-1">
                         <label for="nip">NIP</label>
                         <input type="text" class="form-control" name="nip" id="nip"
-                            placeholder="Masukkan NIP">
+                            placeholder="Masukkan NIP" required>
                     </div>
                     <div class="form-group my-1">
                         <label for="nama">Nama petugas pelayanan</label>
                         <input type="text" class="form-control" name="nama" id="nama"
-                            placeholder="Masukkan Nama petugas pelayanan">
+                            placeholder="Masukkan Nama petugas pelayanan" required>
                     </div>
                     {{-- <div class="form-group my-1">
                         <label for="jabatan">Jabatan</label>
@@ -32,22 +32,22 @@
                     <div class="form-group my-1">
                         <label for="bidang">Bidang</label>
                         <input type="text" class="form-control" name="bidang" id="bidang"
-                            placeholder="Masukkan Bidang">
+                            placeholder="Masukkan Bidang" required>
                     </div>
                     <div class="form-group my-1">
                         <label for="no_hp">No HP</label>
                         <input type="text" class="form-control" name="no_hp" id="no_hp"
-                            placeholder="Masukkan No HP">
+                            placeholder="Masukkan No HP" required>
                     </div>
                     <div class="form-group my-1">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" name="email" id="email"
-                            placeholder="Masukkan Email">
+                            placeholder="Masukkan Email" required>
                     </div>
-                    <div class="form-group my1-">
+                    <div class="form-group my-1">
                         <label for="alamat">Alamat</label>
                         <input type="text" class="form-control" name="alamat" id="alamat"
-                            placeholder="Masukkan Alamat">
+                            placeholder="Masukkan Alamat" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

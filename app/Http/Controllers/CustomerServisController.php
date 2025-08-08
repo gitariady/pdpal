@@ -10,6 +10,8 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
+
 
 class CustomerServisController extends Controller
 {
@@ -123,8 +125,10 @@ class CustomerServisController extends Controller
 
     public function destroy(string $id)
     {
+        if (!in_array(Auth::user()->level, ['admin'])) {
+            abort(403, 'Tidak diizinkan masuk halaman ini.');
+        }
         CustomerServis::destroy($id); // Pastikan C besar
-
         Alert::toast('Data Customer Servis berhasil dihapus', 'error');
 
         return redirect()->route('customerservis.index');

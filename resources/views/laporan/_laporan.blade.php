@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laporan Masuk</title>
+    <title>Laporan Permintaan Pelayanan</title>
     <style>
-        body { font-family: sans-serif; font-size: 12px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        table, th, td { border: 1px solid black; }
-        th, td { padding: 6px; text-align: left; }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 6px;
+            text-align: left;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
     </style>
 </head>
-<div style="text-align: center;">
-    <h2 class="d-flex align-items-center mb-0">
-        <i class=""></i> <strong style="border-bottom: 2px solid;">PERUSAHAAN DAERAH PENGELOLAAN AIR LIMBAH</strong>
-    </h2>
-</div>
 <body>
-    <h2 >Laporan Data Pelayanan</h2>
+    <img src="images/pd1.png" align="left" height="80" width="80" />
+            <h3>
+                PERUSAHAAN DAERAH PENGELOLA AIR LIMBAH
+                <br></br>
+                PD PAL KOTA BANJARMASIN
+            </h3>
+            <hr style="border: 2px solid black;"/>
+
+    <h4>Laporan Data Pelayanan</h4>
 
     <table>
         <thead>
@@ -43,7 +70,12 @@
                 <td>{{ $item->alamat }}</td>
                 <td>
                     @if($item->ktp)
-                        <img src="{{ asset('storage/' . $item->ktp) }}" style="max-width: 100px;">
+                        <img src="@php
+                            $path = public_path('storage/' . $item->ktp);
+                            echo file_exists($path)
+                                ? 'data:image/png;base64,' . base64_encode(file_get_contents($path))
+                                : null;
+                        @endphp" style="max-width: 100px;">
                     @else
                         <p>Tidak ada gambar</p>
                     @endif

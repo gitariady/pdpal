@@ -11,15 +11,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('bangunan.store') }}" method="POST">
+                <form action="{{ route('bangunan.store') }}" method="POST" novalidate>
                     @csrf
                     <div class="form-group">
                         <label for="name">Nama bangunan</label>
                         <input type="text" class="form-control" name="nama_bangunan" id="nama_bangunan" placeholder="Masukkan Nama bangunan">
+                        @error('nama_bangunan')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="biaya">Biaya</label>
                         <input type="number" class="form-control" name="biaya" id="biaya" placeholder="Masukkan Biaya">
+                        @error('biaya')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

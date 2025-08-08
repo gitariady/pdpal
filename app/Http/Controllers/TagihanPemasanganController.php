@@ -37,13 +37,13 @@ class tagihanpemasanganController extends Controller
                 })
                 ->addColumn('bukti_tagihan', function ($row) {
                     if ($row->bukti_tagihan && Storage::disk('public')->exists($row->bukti_tagihan)) {
-                        return '<img src="' . asset('storage/' . $row->bukti_tagihan) . '" width="80">';
+                        return '<img src="' . asset('storage/' . $row->bukti_tagihan) . '" width="50">';
                     }
                     return '-';
                 })
                 ->addColumn('bukti_bayar', function ($row) {
                     if ($row->bukti_bayar && Storage::disk('public')->exists($row->bukti_bayar)) {
-                        return '<img src="' . asset('storage/' . $row->bukti_bayar) . '" width="80">';
+                        return '<img src="' . asset('storage/' . $row->bukti_bayar) . '" width="50">';
                     }
                     return '-';
                 })

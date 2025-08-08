@@ -2,7 +2,7 @@
 @section('title', 'laporan Masuk')
 @section('plugins.Datatables', true)
 @section('content_header')
-    <h1 class="m-0 text-dark">Data laporan Masuk</h1>
+    <h1 class="m-0 text-dark">Data Permintaan Pelayanan </h1>
 @stop
 @section('content')
     <div class="row">
